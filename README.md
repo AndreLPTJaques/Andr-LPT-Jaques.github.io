@@ -1,4 +1,4 @@
-# Bem-vindo ao Portfólio de André Luís Pedroza Tarragô Jaques 👋
+# Bem-vindo ao Portfólio de André Luís Pedroza Tarragó Jaques 👋
 
 Olá! Sou André Luís Pedroza Tarragó Jaques, desenvolvedor com foco em **automação de processos**, **desenvolvimento web** e **análise de dados**. Este repositório serve como uma coleção dos projetos que desenvolvi até agora, incluindo **scripts de automação**, **projetos de websites** e **dashboards de análise**. Abaixo você encontrará informações importantes sobre mim, o repositório e como colaborar com o projeto.
 
