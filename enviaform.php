@@ -1,21 +1,31 @@
 <?php
+// Verifique se os campos estão preenchidos e recebendo valores
+$nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+$mensagem = filter_input(INPUT_POST, 'mensagem', FILTER_SANITIZE_STRING);
 
-$nome = addcslashes($_POST['nome']);
-$email = addcslashes($_POST['email']);
-$telefone = isset($_POST['telefone']) ? addcslashes($_POST['telefone']) : ''; // Opcional, se telefone estiver no formulário
-$mensagem = addcslashes($_POST['mensagem']);
+if (!$nome || !$email || !$mensagem) {
+    echo "Preencha todos os campos corretamente.";
+    exit;
+}
 
 $para = "andreluisptj@gmail.com";
 $assunto = "Coleta de dados";
 
-$corpo = "Nome: ".$nome."\n"."E-mail: ".$email."\n"."Telefone: ".$telefone."\n"."Mensagem: ".$mensagem;
+// Formata o corpo do e-mail
+$corpo = "Nome: $nome\n";
+$corpo .= "E-mail: $email\n";
+$corpo .= "Mensagem: $mensagem\n";
 
-$cabeca = "From: andreluisptj@gmail.com"."\n"."Reply-To: ".$email."\n"."X-Mailer: PHP/".phpversion();
+// Cabeçalhos de e-mail (corrigidos)
+$cabecalhos = "From: andreluisptj@gmail.com\r\n";
+$cabecalhos .= "Reply-To: $email\r\n";
+$cabecalhos .= "X-Mailer: PHP/" . phpversion();
 
-if(mail($para, $assunto, $corpo, $cabeca)){
+// Envia o e-mail e trata possíveis erros
+if (mail($para, $assunto, $corpo, $cabecalhos)) {
     echo "E-mail enviado com sucesso!";
 } else {
-    echo "Aconteceu um erro ao enviar o e-mail.";
+    echo "Erro ao enviar o e-mail. Verifique as configurações do servidor de e-mail.";
 }
-
 ?>
