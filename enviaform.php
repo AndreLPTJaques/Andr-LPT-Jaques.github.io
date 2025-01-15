@@ -25,6 +25,7 @@ $corpo .= "Mensagem: $mensagem\n";
 $cabeca = "From: $para\n";
 $cabeca .= "Reply-To: $email\n";
 $cabeca .= "X-Mailer: PHP/" . phpversion();
+$cabeca .= "Content-Type: text/plain; charset=UTF-8\n";  // Definir o charset corretamente
 
 // Envio do e-mail
 if (mail($para, $assunto, $corpo, $cabeca)) {
